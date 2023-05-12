@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const levelUp = document.getElementById("upLevel");
+    const levelDown = document.getElementById("downLevel");
     const canvas = document.getElementById("tetrisCanvas");
     const context = canvas.getContext("2d");
     const scale = 30; // Adjust the scale value to change the size of the pieces
@@ -262,7 +264,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateScore() {
         const scoreElement = document.getElementById("scoreValue");
-        console.log(player.score)
         scoreElement.innerText = player.score;
     }
 
@@ -284,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
         player.score = 0;
         grid.forEach((row) => row.fill(0));
         updateScore();
+        dropInterval = 10000;
     }
 
     function update(time = 0) {
@@ -298,6 +300,31 @@ document.addEventListener("DOMContentLoaded", () => {
         updateScore();
         requestAnimationFrame(update);
     }
+
+    const downTheLevel = () => {
+        if(dropInterval >= 1000){
+            dropInterval += 1000
+        } else if(dropInterval >= 100){
+            dropInterval += 100
+        }
+
+        console.log(dropInterval);
+    }
+
+    const raiseTheLevel = () => {
+        if(dropInterval <= 1000){
+            dropInterval -= 100
+        } else if(dropInterval === 100){
+            alert("No puedes subir mas el nivel")
+        } else {
+            dropInterval -= 1000
+        }
+
+        console.log(dropInterval);
+    }
+
+    levelUp.addEventListener("click", raiseTheLevel)
+    levelDown.addEventListener("click", downTheLevel)
 
     update();
 });
