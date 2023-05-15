@@ -1,11 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+* {
+    font-family: 'Russo One', sans-serif;
+}
+
 body {
     display: flex;
+    background: linear-gradient(90deg, blue, black, white);
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #000;
+    overflow-y: hidden;
 }
 
-#tetrisCanvas {
-    border: 1px solid #fff;
+.title {
+    color: white;
+    text-align: center;
+}
+
+.title, #score, #speed {
+    text-shadow: black 0 2px 3px;
+}
+
+.btnsContainer {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-inline-end: 20px;
+}
+
+#speed {
+    align-self: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+#upLevel, #downLevel {
+    margin-block: 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 5px 10px -2.5px black;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#upLevel:hover {
+    background: green;
+}
+
+#downLevel:hover {
+    background: red;
+}
+
+
+
+#upLevel {
+    background: greenyellow;
+}
+
+#downLevel {
+    background: tomato;
 }

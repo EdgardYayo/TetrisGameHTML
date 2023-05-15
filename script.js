@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const levelUp = document.getElementById("upLevel");
     const levelDown = document.getElementById("downLevel");
+    var speedScore = document.getElementById("speedValue");
     const canvas = document.getElementById("tetrisCanvas");
     const context = canvas.getContext("2d");
     const scale = 30; // Adjust the scale value to change the size of the pieces
@@ -308,6 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dropInterval += 100
         }
 
+        speedScore.innerText = `These pieces take ${dropInterval} miliseconds to fall`
         console.log(dropInterval);
     }
 
@@ -320,11 +322,13 @@ document.addEventListener("DOMContentLoaded", () => {
             dropInterval -= 1000
         }
 
+        speedScore.innerText = `These pieces take ${dropInterval} miliseconds to fall`
         console.log(dropInterval);
     }
 
     levelUp.addEventListener("click", raiseTheLevel)
     levelDown.addEventListener("click", downTheLevel)
+
 
     update();
 });
